@@ -6,6 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.parse.Parse;
+import com.parse.ParseUser;
+
 public class ContactsActivity extends AppCompatActivity {
 
 
@@ -13,8 +16,15 @@ public class ContactsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacts);
-        Intent i = new Intent(this, SignInActivity.class);
-        startActivity(i);
+
+        Parse.enableLocalDatastore(this);
+        Parse.initialize(this, "QiJzIEgWWDOyAgL4gF8SjG5MYqj4ojgbn1Mp1oW2", "25w0GwzuYyjokR6DFxD6UVtOq3pJ7iOMsOvQx8L1");
+
+        if (ParseUser.getCurrentUser() == null) {
+            Intent i = new Intent(this, SignInActivity.class);
+            startActivity(i);
+        }
+      
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
                     .add(R.id.container, new ContactsFragment())
