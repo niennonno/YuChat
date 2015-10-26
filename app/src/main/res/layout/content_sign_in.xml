@@ -21,6 +21,7 @@
             android:layout_height="wrap_content"/>
 
         <EditText
+            android:inputType="textPassword"
             android:id="@+id/user_password"
             android:hint="@string/password_hint"
             android:layout_width="match_parent"

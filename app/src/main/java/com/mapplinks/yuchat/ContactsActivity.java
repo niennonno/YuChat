@@ -24,7 +24,7 @@ public class ContactsActivity extends AppCompatActivity {
             Intent i = new Intent(this, SignInActivity.class);
             startActivity(i);
         }
-      
+
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
                     .add(R.id.container, new ContactsFragment())

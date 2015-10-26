@@ -75,7 +75,10 @@ public class SignInActivity extends AppCompatActivity {
                                 if (e == null) {
                                     Toast.makeText(SignInActivity.this, "Signed Up!", Toast.LENGTH_SHORT).show();
                                 } else {
-                                    Toast.makeText(SignInActivity.this, "Error!", Toast.LENGTH_SHORT).show();
+                                    int a = e.getCode();
+                                    String error = String.valueOf(a);
+                                    e.printStackTrace();
+                                    Toast.makeText(SignInActivity.this, error, Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });

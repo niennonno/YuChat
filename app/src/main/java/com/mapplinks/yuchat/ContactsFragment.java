@@ -15,6 +15,9 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
@@ -80,7 +83,16 @@ public class ContactsFragment extends Fragment implements
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-        mSimpleCursorAdapter.swapCursor(data);
+//        mSimpleCursorAdapter.swapCursor(data);
+        List<String> numbers = new ArrayList<>();
+        data.moveToFirst();
+        while(!data.isAfterLast()){
+            String phoneNumber = data.getString(1);
+            phoneNumber = phoneNumber.replaceAll("-","");
+            phoneNumber = phoneNumber.replaceAll(" ","");
+            numbers.add(phoneNumber);
+            data.moveToNext();
+        }
     }
 
     @Override
